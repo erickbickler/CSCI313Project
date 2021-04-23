@@ -26,19 +26,23 @@ export class HttpService {
       })
     );
   }
-      
+  
+  // Executes an http post request to the database at the file name and pushes the object to that file.
   httpPost(file: string, obj: Httpable) {
-    return this.http.post(this.dbConn + file, obj);
+    return this.http.post(this.dbConn + file, this.dataWrapper(obj));
   }
   
-  httpDelete(file: string, objId: string) {
-    return this.http.delete(this.dbConn + objId + ".json");
+  // Executes an http delete request to the database at the file name and deletes the object with the same id
+  httpDelete(file: string, obj: Httpable) {
+    return this.http.delete(this.dbConn + file + obj.id + ".json");
   }
   
-  httpPut(file:string, objId: string, obj: Httpable) {
-    return this.http.put(this.dbConn + file + objId + ".json", this.dataWrapper(obj));
+  // Executes an http put request to the database at the file name and updates the object with the same id
+  httpPut(file:string, obj: Httpable) {
+    return this.http.put(this.dbConn + file + obj.id + ".json", this.dataWrapper(obj));
   }
   
+  // Used for setting the id of the object so the file is properly named
   private dataWrapper(obj: Httpable) {
     return {
       [obj.id]: obj
