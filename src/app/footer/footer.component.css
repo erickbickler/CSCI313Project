@@ -1,0 +1,18 @@
+.footer {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    background-color: #dc3545;
+    color: white;
+    font-size: 12px;
+    height: 100px;
+}
+
+.links {
+    color: white;
+}
+
+.social-media {
+    text-align: center;
+}
