@@ -1,3 +1,42 @@
-<p>locations works!</p>
-<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Mollitia, non tenetur? Molestias suscipit voluptatum quidem officia dignissimos perferendis at natus accusamus repellat culpa minima omnis iure, nobis fugiat, laboriosam praesentium?</p>
-<p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Illum cumque soluta quam consequatur, ducimus quibusdam neque labore libero nihil sint, quae voluptas aliquam eum veritatis culpa amet blanditiis animi eius?</p>
+<h1>Our Locations</h1>
+
+<div class="card" *ngFor="let location of locationList">
+  <div class="card-header">
+    <h4>{{location.city}}, {{location.state}}</h4>
+  </div>
+  <div class="card-body">
+    <ul>Address: {{location.address}}</ul>
+    <ul>Phone Number: {{location.phone_number}}</ul>
+    <a href="{{location.map_url}}">View Location</a>
+
+    <div *ngIf="isAdmin">
+      <button class="btn btn-primary" (click)="deleteLocation(location)">Delete Location</button>
+    </div>
+  </div>
+</div>
+
+
+<div *ngIf="isAdmin">
+  <div class="container">
+    <h1>Admin - Add Location</h1>
+    <div class="card">
+      <div class="card-body">
+        <div class="form-group">
+          <input class="form-control" type="text" [(ngModel)]="new_city" placeholder="City">
+        </div>
+        <div class="form-group">
+          <input class="form-control" type="text" [(ngModel)]="new_state" placeholder="State">
+        </div>
+        <div class="form-group">
+          <input class="form-control" type="text" [(ngModel)]="new_address" placeholder="Address">
+        </div>
+        <div class="form-group">
+          <input class="form-control" type="text" [(ngModel)]="new_phone_number" placeholder="Phone Number">
+        </div>
+        <div class="form-group">
+          <button class="btn btn-primary" (click)="addNewLocation()">Add Location</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
