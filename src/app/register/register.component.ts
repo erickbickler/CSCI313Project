@@ -1,33 +1,34 @@
+import { Route } from '@angular/compiler/src/core';
 import { Component, OnInit } from '@angular/core';
-import { Form, FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { LoginService } from '../login.service';
 import { LoginStatus } from '../LoginStatus';
 
 @Component({
-  selector: 'app-login',
-  templateUrl: './login.component.html',
-  styleUrls: ['./login.component.css']
+  selector: 'app-register',
+  templateUrl: './register.component.html',
+  styleUrls: ['./register.component.css']
 })
-export class LoginComponent implements OnInit {
+export class RegisterComponent implements OnInit {
   form:FormGroup = this.formBuilder.group({
+    firstName: ['', Validators.required],
+    lastName: ['', Validators.required],
     username: ['', Validators.required],
-    password: ['', Validators.required]
+    password: ['', [Validators.required, Validators.minLength(6)]]
   });
   loading = false;
   submitted = false;
-  returnUrl:string = '';
   loggedIn = LoginStatus.loggedIn;
 
   constructor(
+    private formBuilder: FormBuilder,
     private route: ActivatedRoute,
     private router: Router,
-    private formBuilder: FormBuilder,
     private loginService: LoginService,
-  ) { }
+    ) { }
 
   ngOnInit(): void {
-    this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/';
   }
 
   get f() { return this.form.controls; }
@@ -40,8 +41,8 @@ export class LoginComponent implements OnInit {
     }
 
     this.loading = true;
-    this.loginService.login(this.f.username.value, this.f.password.value);
-    this.loading = false;
-    this.router.navigate([this.returnUrl]);
+    this.loginService.register(this.f.username.value, this.f.password.value);
+    this.router.navigate(['../login'], { relativeTo: this.route });
   }
+
 }

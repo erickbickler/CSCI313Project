@@ -1,20 +1,19 @@
 import { Injectable } from '@angular/core';
 import { HttpService } from './http-service.service';
 import { User } from './user';
+import { LoginStatus } from './LoginStatus';
 
 @Injectable({
   providedIn: 'root'
 })
 export class LoginService {
 
-  loggedIn = false;
-
   constructor(
     private httpService: HttpService,
   ) { }
 
   login(username:string, password:string) {
-    this.loggedIn = true;
+    LoginStatus.loggedIn = true;
   }
 
   register(username:string, password:string) {
