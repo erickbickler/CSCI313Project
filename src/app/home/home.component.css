@@ -1,9 +1,9 @@
 .background {
-    background-color: #ffc87c;
+    background-color: white;
 }
 .logo {
-    padding: 100px;
+    padding: 50px;
 }
-.paragraph{
+.paragraph, .about{
     text-align: center;
 }

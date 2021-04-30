@@ -17,7 +17,7 @@ export class LocationsComponent implements OnInit {
   new_phone_number: string = '';
   new_map_url: string ='';
 
-  isAdmin: boolean = false;
+  isAdmin: boolean = true;
 
 
   constructor(private locService: LocationService) { }

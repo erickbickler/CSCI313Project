@@ -4,12 +4,18 @@
 button{
   margin: 3px;
 }
-.container{
+.holder{
   margin: 5px;
 }
 h1{
   margin: 5px;
 }
-.card-header{
+.card-header {
   background-color: #FFB37F;
+}
+.locations {
+  text-align: center;
+}
+.background {
+  background-color: #ffc87c;
 }
