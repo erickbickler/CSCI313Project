@@ -1,0 +1,18 @@
+footer{
+    background-color: #fd7e14;
+    bottom: 0;
+    height: 60px;
+}
+.links {
+    color: white;
+}
+.social-media {
+    text-align: center;
+}
+.info-login{
+    text-align: center;
+    color: white;
+}
+.admin-login {
+    color: white;
+}

@@ -1,0 +1,9 @@
+.background {
+    background-color: white;
+}
+.logo {
+    padding: 50px;
+}
+.paragraph, .about{
+    text-align: center;
+}

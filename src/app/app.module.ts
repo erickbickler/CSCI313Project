@@ -9,6 +9,12 @@ import { NavbarComponent } from './navbar/navbar.component';
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 import { LoginService } from './login.service';
+import { FooterComponent } from './footer/footer.component';
+import { LocationsComponent } from './locations/locations.component';
+import { HomeComponent } from './home/home.component';
+
+import { HttpClientModule } from '@angular/common/http';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -16,6 +22,9 @@ import { LoginService } from './login.service';
     NavbarComponent,
     LoginComponent,
     RegisterComponent,
+    FooterComponent,
+    LocationsComponent,
+    HomeComponent
   ],
   imports: [
     BrowserModule,
