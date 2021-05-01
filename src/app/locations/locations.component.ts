@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { LocationService } from '../location.service';
-import { Location } from '../location';
-import { ReplaySubject } from 'rxjs';
+import { HttpService } from '../http-service.service';
+import { Location } from '../Model/location';
 
 @Component({
   selector: 'app-locations',
@@ -10,35 +9,31 @@ import { ReplaySubject } from 'rxjs';
 })
 export class LocationsComponent implements OnInit {
   locationList: Location[] = [];
-  nextID: number = 0;
   new_city: string = '';
   new_state: string = '';
   new_address: string = '';
   new_phone_number: string = '';
   new_map_url: string ='';
+  location:Location = new Location('', '', '', '', '');
 
-  isAdmin: boolean = true;
+  isAdmin: boolean = false;
+  
 
-
-  constructor(private locService: LocationService) { }
+  constructor(private dbService: HttpService) { }
 
   ngOnInit() {
     this.fetchData();
   }
 
-  addNewLocation() {
+  addLocation() {
     this.new_map_url = 'https://www.google.com/maps/search/?api=1&query=' + this.new_address.replace(' ', '+')
     + '+' + this.new_city.replace(' ', '+') + '+' + this.new_state.replace(' ', '+');
 
-    const newLocation: Location = {
-      id: ++this.nextID,
-      city: this.new_city,
-      state: this.new_state,
-      address: this.new_address,
-      phone_number: this.new_phone_number,
-      map_url: this.new_map_url
-    };
-    this.locService.addLocation(newLocation).subscribe(data => this.fetchData());
+    let newLocation:Location = new Location(this.new_city, this.new_state, this.new_address, this.new_phone_number, this.new_map_url);
+    this.dbService.httpPut('location', newLocation).subscribe();
+    
+    // Update the page with new location
+    this.fetchData();
 
     // Clear the text boxes
     this.new_city = '';
@@ -48,12 +43,11 @@ export class LocationsComponent implements OnInit {
   }
 
   deleteLocation(loc: Location) {
-    this.locService.deleteLocation(loc).subscribe(data => this.fetchData());
+    this.dbService.httpDelete('location', loc).subscribe();
+    this.fetchData();
   }
 
   fetchData() {
-    this.locService
-      .getLocationData()
-      .subscribe(data => (this.locationList = data));
+    this.dbService.httpGet('location').subscribe(data => this.locationList = data as Location[]);
   }
 }
