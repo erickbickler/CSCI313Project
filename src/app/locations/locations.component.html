@@ -4,23 +4,6 @@
       </div>
 
       <div class="col-6">
-        <h1>Our Locations</h1>
-  
-        <div class="card mx-auto" *ngFor="let location of locationList">
-          <div class="card-header">
-            <h4>{{location.city}}, {{location.state}}</h4>
-          </div>
-          <div class="card-body">
-            <ul>Address: {{location.address}}</ul>
-            <ul>Phone Number: {{location.phone_number}}</ul>
-            <ul><a href="{{location.map_url}}">Directions</a></ul>
-          
-            <div *ngIf="isAdmin">
-              <button class="btn btn-primary" (click)="deleteLocation(location)">Delete Location</button>
-            </div>
-          </div>
-        </div>
-
         <div *ngIf="isAdmin">
           <div class="holder">
             <h1>Admin - Add Location</h1>
@@ -39,9 +22,25 @@
                   <input class="form-control" type="text" [(ngModel)]="new_phone_number" placeholder="Phone Number">
                 </div>
                 <div class="form-group">
-                  <button class="btn btn-primary" (click)="addNewLocation()">Add Location</button>
+                  <button class="btn btn-primary" (click)="addLocation()">Add Location</button>
                 </div>
               </div>
+            </div>
+          </div>
+        </div>
+
+        <h1>Our Locations</h1>
+        <div class="card mx-auto" *ngFor="let location of locationList">
+          <div class="card-header">
+            <h4>{{location.city}}, {{location.state}}</h4>
+          </div>
+          <div class="card-body">
+            <ul>Address: {{location.address}}</ul>
+            <ul>Phone Number: {{location.phone_number}}</ul>
+            <ul><a href="{{location.map_url}}">Directions</a></ul>
+          
+            <div *ngIf="isAdmin">
+              <button class="btn btn-primary" (click)="deleteLocation(location)">Delete Location</button>
             </div>
           </div>
         </div>
