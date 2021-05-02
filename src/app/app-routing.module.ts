@@ -6,6 +6,10 @@ import { RegisterComponent } from './register/register.component';
 import { LocationsComponent } from './locations/locations.component';
 import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
+import { MenuItemPageComponent } from './menu-item-page/menu-item-page.component';
+import { MenuCategoryPageComponent } from './menu-category-page/menu-category-page.component';
+import { MenuItemDescriptionPageComponent } from './menu-item-description-page/menu-item-description-page.component';
+import { MenuPageComponent } from './menu-page/menu-page.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full' },
@@ -13,6 +17,10 @@ const routes: Routes = [
   { path: 'locations', component: LocationsComponent },
   { path: 'login', component: LoginComponent },
   { path: 'register', component: RegisterComponent },
+  { path: 'menu-category-page', component:MenuCategoryPageComponent},
+  { path: 'menu-item-page', component: MenuItemPageComponent },
+  { path: 'menu-item-description-page', component: MenuItemDescriptionPageComponent},
+  { path: 'menu' , component:MenuPageComponent}
 ];
 
 @NgModule({
