@@ -16,7 +16,7 @@ export class LocationsComponent implements OnInit {
   new_map_url: string ='';
   location:Location = new Location('', '', '', '', '');
 
-  isAdmin: boolean = false;
+  isAdmin: boolean = true;
   
 
   constructor(private dbService: HttpService) { }
