@@ -6,10 +6,10 @@ import { MenuItem } from './Model/menu-item';
   providedIn: 'root'
 })
 export class MenuService {
-  menuCatigories:MenuCategory[] = []
-  activeCatigory:MenuCategory = new MenuCategory('','','');
+  menuCategories:MenuCategory[] = []
+  activeCategory:MenuCategory = new MenuCategory('','','');
 
-  indexOfCatigory:number = 0;
+  indexOfCategory:number = 0;
 
   menuItems:MenuItem[]=[];
   activeMenuItem:MenuItem = new MenuItem('','','');

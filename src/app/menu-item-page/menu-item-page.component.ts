@@ -4,6 +4,8 @@ import { HttpService } from '../http-service.service';
 import { MenuService } from '../menu.service';
 import { MenuCategory } from '../Model/menu-category';
 import { MenuItem } from '../Model/menu-item';
+import { LoginStatus } from '../LoginStatus';
+
 
 @Component({
   selector: 'app-menu-item-page',
@@ -15,16 +17,17 @@ export class MenuItemPageComponent implements OnInit {
   
 
   menuCategory:MenuCategory= new MenuCategory('','','');
-  constructor(private dbservice:HttpService, private menuservice:MenuService, private router:Router) { }
-  admin:boolean=false;
+  constructor(private dbservice:HttpService, private menuservice:MenuService, private router:Router,) { }
+  admin:boolean = LoginStatus.loggedIn;
   menuItems :MenuItem[] = []
   ngOnInit(): void {
-    if(this.menuservice.activeCatigory.name == ''){
+    if(this.menuservice.activeCategory.name == ''){
       this.router.navigate(['/menu-category-page']);
     }
-    this.menuCategory = this.menuservice.activeCatigory;
+    this.menuCategory = this.menuservice.activeCategory;
     this.setData();
     this.admin= this.dbservice.admin;
+    this.admin = LoginStatus.loggedIn;
 
   }
 
@@ -38,7 +41,7 @@ export class MenuItemPageComponent implements OnInit {
 
   back(){
     this.router.navigate(['/menu-category-page']);
-    this.menuservice.activeCatigory = new MenuCategory('','','')
+    this.menuservice.activeCategory = new MenuCategory('','','')
   }
   refreshData(){
     this.menuItems = this.menuservice.menuItems;

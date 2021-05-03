@@ -20,11 +20,15 @@ export class MenuCategoryEditComponent implements OnInit {
     picture:string="";
 
     edit(){
-      this.menuservice.activeCatigory.setName(this.name);
-      this.menuservice.activeCatigory.setDescription( this.description)
-      this.menuservice.activeCatigory.setImage(this.picture)
-      this.dbservice.httpPut('menuCategory', this.menuservice.activeCatigory).subscribe();
-      this.menuservice.menuCatigories[this.menuservice.indexOfCatigory] = this.menuservice.activeCatigory;
+      this.menuservice.activeCategory.setName(this.name);
+      this.menuservice.activeCategory.setDescription( this.description)
+      this.menuservice.activeCategory.setImage(this.picture)
+      this.dbservice.httpPut('menuCategory', this.menuservice.activeCategory).subscribe();
+      this.menuservice.menuCategories[this.menuservice.indexOfCategory] = this.menuservice.activeCategory;
+      
+      this.name = "";
+      this.description="";
+      this.picture="";
   }
 
 }
