@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Title } from '@angular/platform-browser';
 import { HttpService } from '../http-service.service';
 import { Location } from '../Model/location';
+import { LoginStatus } from '../LoginStatus';
 
 @Component({
   selector: 'app-locations',
@@ -19,6 +20,7 @@ export class LocationsComponent implements OnInit {
 
   isAdmin: boolean = true;
   locationToEdit: Location = new Location('', '', '', '', '');
+  loggedIn:boolean = LoginStatus.loggedIn;
 
   constructor(
     private dbService: HttpService,
@@ -26,6 +28,7 @@ export class LocationsComponent implements OnInit {
   ) { }
 
   ngOnInit() {
+    this.loggedIn = LoginStatus.loggedIn;
     this.titleService.setTitle("Locations");
     this.fetchData();
   }
