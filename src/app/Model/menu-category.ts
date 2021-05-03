@@ -11,7 +11,6 @@ export class MenuCategory extends Httpable
         this.description = description;
         this.image = image;
     }
-
     setDescription(description:string){
         this.description = description
     }
