@@ -17,9 +17,13 @@ export class MenuCategoryPageComponent implements OnInit {
     ngOnInit(): void {
     this.admin = this.dbservice.admin;
     this.setData()
+    this.menuCategories = this.menuservice.menuCatigories
   }
-  async setData(){
-    this.dbservice.httpGet('menuCategory').subscribe( data => this.menuservice.menuCatigories = data as MenuCategory[]);
+  setData(){
+    this.dbservice.httpGet('menuCategory').subscribe( data => data.forEach(element => {
+      this.menuservice.menuCatigories.push(element as MenuCategory);
+    })); 
+    console.log(this.menuservice.menuCatigories)
     this.delay(500);
     this.menuCategories = this.menuservice.menuCatigories
   }

@@ -27,7 +27,7 @@ export class MenuItemCardComponent implements OnInit {
 
   remove(){
     this.dbservice.httpDelete("menuCategory/" +  this.menuservice.activeCatigory.id + "/" +'menu-items', this.menuItem).subscribe();
-    this.menuservice.menuCatigories.splice(this.index,1);
+    this.menuservice.menuItems.splice(this.index,1);
   }
 
 }
