@@ -1,0 +1,5 @@
+<app-menu-item-card-edit *ngIf='admin'></app-menu-item-card-edit>
+<img [src]="menuItem.image">
+<h1>{{menuItem.name}}</h1>
+<p>{{menuItem.description}}</p>
+<button class="btn btn-primary" (click)="back()">Back</button>

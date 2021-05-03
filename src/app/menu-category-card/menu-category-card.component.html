@@ -1,0 +1,11 @@
+<div>
+<div (click)="onClick()">
+    <div class="card" style="width: 18rem; height: 250px;">
+        <img class="card-img-top" [src]="category.image" alt="Card image cap">
+        <div class="card-body">
+            <p class="card-text">{{category.name}}</p>
+        </div>
+    </div>
+</div>
+<button *ngIf="admin" class="btn btn-primary" (click)="remove()">remove</button>
+</div>

@@ -1,0 +1,15 @@
+<div *ngIf='admin'>
+  <app-menu-category-edit></app-menu-category-edit>
+  <app-menu-item-card-add (refreshData)="refreshData()"></app-menu-item-card-add>
+</div>
+<div class="container">
+  <h1>Food Items</h1>
+  <div class="grid-container">
+      <div *ngFor="let menuItem of menuItems; index as i">
+          <div class=".grid-item">
+              <app-menu-item-card [index]='i'></app-menu-item-card>
+          </div>
+      </div>
+  </div>
+</div>
+<button class="btn btn-primary"  (click)="back()">back</button>
