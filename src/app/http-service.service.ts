@@ -39,7 +39,6 @@ export class HttpService {
         })
       );
     }
-    
   }
   
   // Executes an http post request to the database at the file name and pushes the object to that file.
@@ -56,12 +55,4 @@ export class HttpService {
   httpPut(file:string, obj: Httpable) {
     return this.http.put(this.dbConn + file + "/" + obj.id + ".json", obj);
   }
-  
-  // Used for setting the id of the object so the file is properly named
-  private dataWrapper(obj: Httpable) {
-    return {
-      [obj.id]: obj
-    }
-  }
-
 }
