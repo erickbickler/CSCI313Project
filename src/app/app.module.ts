@@ -13,8 +13,6 @@ import { FooterComponent } from './footer/footer.component';
 import { LocationsComponent } from './locations/locations.component';
 import { HomeComponent } from './home/home.component';
 
-import { HttpClientModule } from '@angular/common/http';
-import { FormsModule } from '@angular/forms';
 import { MenuCategoryPageComponent } from './menu-category-page/menu-category-page.component';
 import { MenuCategoryCardComponent } from './menu-category-card/menu-category-card.component';
 import { MenuCategoryAddCardComponent } from './menu-category-add-card/menu-category-add-card.component';
@@ -25,6 +23,7 @@ import { MenuItemCardAddComponent } from './menu-item-card-add/menu-item-card-ad
 import { MenuItemDescriptionPageComponent } from './menu-item-description-page/menu-item-description-page.component';
 import { MenuPageComponent } from './menu-page/menu-page.component';
 import { MenuItemCardEditComponent } from './menu-item-card-edit/menu-item-card-edit.component';
+import { MenuService } from './menu.service';
 
 @NgModule({
   declarations: [

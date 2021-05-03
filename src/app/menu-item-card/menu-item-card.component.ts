@@ -2,6 +2,7 @@ import { Component, OnInit, Input } from '@angular/core';
 import { Router } from '@angular/router';
 import { HttpService } from '../http-service.service';
 import { MenuService } from '../menu.service';
+import { MenuCategory } from '../Model/menu-category';
 import { MenuItem } from '../Model/menu-item';
 
 @Component({
@@ -18,7 +19,7 @@ export class MenuItemCardComponent implements OnInit {
     this.menuItem = this.menuservice.menuItems[this.index];
   }
 
-  onClick(){
+  OnClick(){
     this.menuservice.activeMenuItem = this.menuItem;
     this.menuservice.IndexOfMenuItem = this.index;
     this.router.navigate(['/menu-item-description-page']);
@@ -26,7 +27,7 @@ export class MenuItemCardComponent implements OnInit {
 
   remove(){
     this.dbservice.httpDelete("menuCategory/" +  this.menuservice.activeCatigory.id + "/" +'menu-items', this.menuItem).subscribe();
-    this.menuservice.menuItems.splice(this.index, 1);
+    this.menuservice.menuCatigories.splice(this.index,1);
   }
 
 }

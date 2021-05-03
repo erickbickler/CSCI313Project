@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { HttpService } from '../http-service.service';
 import { MenuService } from '../menu.service';
 import { MenuCategory } from '../Model/menu-category';
@@ -12,6 +12,9 @@ export class MenuCategoryAddCardComponent implements OnInit {
 
   constructor(private menuservice:MenuService, private dbservice:HttpService) { }
 
+  @Output() refreshData:EventEmitter<boolean> = new EventEmitter();
+
+
   //varibles for admin
   name:string = "";
   description:string="";
@@ -22,6 +25,7 @@ export class MenuCategoryAddCardComponent implements OnInit {
     let catigory: MenuCategory = new MenuCategory(this.name, this.description, this.picture)
     this.dbservice.httpPut('menuCategory', catigory).subscribe();
     this.menuservice.menuCatigories.push(catigory);
+    this.refreshData.emit(true);
   }
 
 }

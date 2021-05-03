@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { HttpService } from '../http-service.service';
 import { MenuService } from '../menu.service';
 import { MenuItem } from '../Model/menu-item';
@@ -10,6 +10,8 @@ import { MenuItem } from '../Model/menu-item';
 })
 export class MenuItemCardAddComponent implements OnInit {
 
+  @Output() refreshData:EventEmitter<boolean> = new EventEmitter();
+
   constructor(private dbservice:HttpService, private menuservice:MenuService) { }
   //varibles for admin
     name:string = "";
@@ -20,7 +22,9 @@ export class MenuItemCardAddComponent implements OnInit {
 
   }
   add(){
-    this.dbservice.httpPut( "menuCategory/" +  this.menuservice.activeCatigory.id + "/" +'menu-items', new MenuItem(this.name, this.description, this.picture)).subscribe();
-    this.menuservice.menuItems.push();
+    let menu:MenuItem = new MenuItem(this.name, this.description, this.picture)
+    this.dbservice.httpPut( "menuCategory/" +  this.menuservice.activeCatigory.id + "/" +'menu-items', menu).subscribe();
+    this.menuservice.menuItems.push(menu);
+    this.refreshData.emit(true)
   }
 }

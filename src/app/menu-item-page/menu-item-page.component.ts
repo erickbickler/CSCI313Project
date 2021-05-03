@@ -27,7 +27,8 @@ export class MenuItemPageComponent implements OnInit {
 
   async setData(){
     this.dbservice.httpGet( "menuCategory/" +  this.menuCategory.id + "/" +'menu-items' ).subscribe(data => this.menuservice.menuItems = data as MenuItem[]);
-    this.menuItems = this.menuservice.menuItems;
+    await this.delay(500)
+    this.menuItems= this.menuservice.menuItems;
   }
 
   back(){
@@ -37,6 +38,8 @@ export class MenuItemPageComponent implements OnInit {
     this.menuItems = this.menuservice.menuItems;
   }
 
-
+  delay(ms: number) {
+    return new Promise(resolve => setTimeout(resolve, ms));
+  }
 
 }
