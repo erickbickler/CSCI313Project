@@ -1,0 +1,17 @@
+<app-menu-category-add-card *ngIf='admin'></app-menu-category-add-card>
+<div class="container">
+    <h1> Food Categories</h1>
+    <div class="row">
+        <div *ngFor="let menuCat of this.menuservice.menuCatigories; index as i;">
+            <div id="left" *ngIf="0==i%3" class="col-sm">
+                <app-menu-category-card [index]="i"></app-menu-category-card>
+            </div>>
+            <div id="mid" *ngIf="1==i%3" class="col-sm">
+                <app-menu-category-card [index]="i"></app-menu-category-card>
+            </div>
+            <div id="right" *ngIf="2==i%3" class="col-sm">
+                <app-menu-category-card [index]="i"></app-menu-category-card>
+            </div>
+        </div>
+    </div>
+</div>

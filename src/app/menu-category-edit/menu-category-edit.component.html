@@ -1,0 +1,19 @@
+<div class="container">
+  <h1>Edit Food Category</h1>
+  <div class="card">
+    <div class="card-body">
+      <div class="form-group">
+        <input class="form-control" type="text" [(ngModel)]="name" placeholder="Food Category Name">
+      </div>
+      <div class="form-group">
+        <input class="form-control" type="text" [(ngModel)]="description" placeholder="Food Category Description">
+      </div>
+      <div class="form-group">
+        <input class="form-control" type="text" [(ngModel)]="picture" placeholder="Food Category Picture URL">
+      </div>
+      <div class="form-group">
+        <button class="btn btn-primary" (click)="edit()">Edit Menu Category</button>
+      </div>
+    </div>
+  </div>
+</div>
