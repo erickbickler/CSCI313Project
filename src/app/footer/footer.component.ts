@@ -1,4 +1,5 @@
 import { Component, DoCheck, OnChanges, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { LoginStatus } from '../LoginStatus';
 
 @Component({
@@ -10,7 +11,7 @@ export class FooterComponent implements OnInit, DoCheck {
 
   loggedIn:boolean = LoginStatus.loggedIn;
 
-  constructor() { }
+  constructor(private router: Router) { }
 
   ngOnInit(): void {
     this.loggedIn = LoginStatus.loggedIn;
@@ -20,5 +21,9 @@ export class FooterComponent implements OnInit, DoCheck {
     this.loggedIn = LoginStatus.loggedIn;
   }
 
+  logout() {
+    LoginStatus.loggedIn = false;
+    this.router.navigate(['login']);
+  }
   
 }

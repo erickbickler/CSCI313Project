@@ -19,6 +19,6 @@
     <p class="info-login">
         @2021 The Saucy Hedgehog | 
         <a routerLink="login" class="admin-login" *ngIf="!loggedIn">Login</a>
-        <a routerLink="login" class="admin-login" *ngIf="loggedIn">Logout</a>
+        <a (click) = "logout()" class="admin-login" *ngIf="loggedIn">Logout</a>
     </p>
 </footer>
