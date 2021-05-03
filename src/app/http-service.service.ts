@@ -17,16 +17,29 @@ export class HttpService {
   
   
   // Executes an http get request from the database at the file name paramater.
-  httpGet(file: string) {
-    return this.http.get<Httpable[]>(
-      this.dbConn + file  + ".json"
-    ).pipe(
-      map( data => {
-        let cArray: Httpable[] = [];
-        for(let key in data) cArray.push(data[key]);
-        return cArray;
-      })
-    );
+  httpGet(file: string, query?:string) {
+    if(query != undefined) {
+      return this.http.get<Httpable[]>(
+        this.dbConn + file  + ".json" + query
+      ).pipe(
+        map( data => {
+          let cArray: Httpable[] = [];
+          for(let key in data) cArray.push(data[key]);
+          return cArray;
+        })
+      );
+    } else {
+      return this.http.get<Httpable[]>(
+        this.dbConn + file  + ".json"
+      ).pipe(
+        map( data => {
+          let cArray: Httpable[] = [];
+          for(let key in data) cArray.push(data[key]);
+          return cArray;
+        })
+      );
+    }
+    
   }
   
   // Executes an http post request to the database at the file name and pushes the object to that file.
