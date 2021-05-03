@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Title } from '@angular/platform-browser';
 import { HttpService } from '../http-service.service';
 import { Location } from '../Model/location';
 
@@ -19,9 +20,13 @@ export class LocationsComponent implements OnInit {
   isAdmin: boolean = true;
   locationToEdit: Location = new Location('', '', '', '', '');
 
-  constructor(private dbService: HttpService) { }
+  constructor(
+    private dbService: HttpService,
+    private titleService: Title,
+  ) { }
 
   ngOnInit() {
+    this.titleService.setTitle("Locations");
     this.fetchData();
   }
 

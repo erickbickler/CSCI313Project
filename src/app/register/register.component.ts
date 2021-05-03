@@ -1,6 +1,7 @@
 import { Route } from '@angular/compiler/src/core';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Title } from '@angular/platform-browser';
 import { ActivatedRoute, Router } from '@angular/router';
 import { HttpService } from '../http-service.service';
 import { LoginService } from '../login.service';
@@ -27,9 +28,11 @@ export class RegisterComponent implements OnInit {
     private router: Router,
     private loginService: LoginService,
     private httpService: HttpService,
+    private titleService: Title,
     ) { }
 
   ngOnInit(): void {
+    this.titleService.setTitle("Register");
   }
 
   get f() { return this.form.controls; }
