@@ -4,6 +4,7 @@ import { MenuService } from '../menu.service';
 import { MenuCategory } from '../Model/menu-category';
 import { Router } from '@angular/router';
 import { ThisReceiver } from '@angular/compiler';
+import { LoginStatus } from '../LoginStatus';
 @Component({
   selector: 'app-menu-category-card',
   templateUrl: './menu-category-card.component.html',
@@ -15,10 +16,10 @@ export class MenuCategoryCardComponent implements OnInit {
     private menuservice : MenuService,
     private router : Router) { }
   @Input() index : number = 0;
-  admin:boolean =false;
+  admin:boolean = LoginStatus.loggedIn;
   category: MenuCategory = new MenuCategory('','','');
   ngOnInit(): void {
-    this.admin = this.dbservice.admin;
+    this.admin =  LoginStatus.loggedIn;
     this.category = this.menuservice.menuCategories[this.index];
   }
 

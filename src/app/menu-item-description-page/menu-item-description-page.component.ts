@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { HttpService } from '../http-service.service';
+import { LoginStatus } from '../LoginStatus';
 import { MenuService } from '../menu.service';
 import { MenuItem } from '../Model/menu-item';
 
@@ -13,12 +14,12 @@ export class MenuItemDescriptionPageComponent implements OnInit {
 
   constructor(private menuService:MenuService, private dbservice : HttpService, private router : Router) { }
   menuItem:MenuItem = this.menuService.activeMenuItem;
-  admin:boolean=false;
+  admin:boolean = LoginStatus.loggedIn;
   ngOnInit(): void {
     if(this.menuService.activeMenuItem.name = ''){
       this.router.navigate(['/menu-category-page']);
     }
-    this.admin = this.dbservice.admin;
+    this.admin = LoginStatus.loggedIn;
   }
 
   back(){
