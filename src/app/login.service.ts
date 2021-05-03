@@ -13,12 +13,19 @@ export class LoginService {
   ) { }
 
   login(username:string, password:string) {
-    LoginStatus.loggedIn = true;
-  }
-
-  register(username:string, password:string) {
-    let user:User = new User(username, password);
-
-    this.httpService.httpPut('users', user).subscribe();
+    let user: User = new User(username, password);
+    this.httpService.httpGet('users', 
+      '?orderBy="username"&equalTo="' 
+      + username 
+      + '"&limitToFirst=1'
+      ).subscribe(data => {
+        let matchedUser: User = data[0] as User;
+        if(matchedUser.username == user.username && matchedUser.password == user.password) {
+          LoginStatus.loggedIn = true;
+          alert("Logged in!")
+        } else {
+          alert("Invalid Username or password");
+        }
+      });
   }
 }
