@@ -25,7 +25,7 @@ export class MenuItemPageComponent implements OnInit {
     this.menuCategory = this.menuservice.activeCatigory;
   }
 
-  async setData(){
+  setData(){
     this.dbservice.httpGet( "menuCategory/" +  this.menuCategory.id + "/" +'menu-items' ).subscribe(data => data.forEach(element => {
       this.menuservice.menuItems.push(element as MenuItem);
     }));

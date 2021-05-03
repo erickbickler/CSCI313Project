@@ -23,20 +23,11 @@ export class MenuCategoryPageComponent implements OnInit {
     this.dbservice.httpGet('menuCategory').subscribe( data => data.forEach(element => {
       this.menuservice.menuCatigories.push(element as MenuCategory);
     })); 
-    console.log(this.menuservice.menuCatigories)
-    this.delay(500);
     this.menuCategories = this.menuservice.menuCatigories
   }
 
   refreshData(){
     this.menuCategories = this.menuservice.menuCatigories
-  }
-
-  delay(ms: number) {
-    return new Promise(resolve => setTimeout(resolve, ms));
-  }
-  Mod3(num : number) : number{
-    return num % 3;
   }
 
 }
