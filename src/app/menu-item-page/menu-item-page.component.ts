@@ -19,14 +19,18 @@ export class MenuItemPageComponent implements OnInit {
   admin:boolean=false;
   menuItems :MenuItem[] = []
   ngOnInit(): void {
-    
+    if(this.menuservice.activeCatigory.name == ''){
+      this.router.navigate(['/menu-category-page']);
+    }
+    this.menuCategory = this.menuservice.activeCatigory;
     this.setData();
     this.admin= this.dbservice.admin;
-    this.menuCategory = this.menuservice.activeCatigory;
+
   }
 
   setData(){
-    this.dbservice.httpGet( "menuCategory/" +  this.menuCategory.id + "/" +'menu-items' ).subscribe(data => data.forEach(element => {
+    this.menuservice.menuItems = [];
+    this.dbservice.httpGet( "menuCategory/" +  this.menuCategory.id + "/" + "menu-items" ).subscribe(data => data.forEach(element => {
       this.menuservice.menuItems.push(element as MenuItem);
     }));
     this.menuItems= this.menuservice.menuItems;
@@ -34,6 +38,7 @@ export class MenuItemPageComponent implements OnInit {
 
   back(){
     this.router.navigate(['/menu-category-page']);
+    this.menuservice.activeCatigory = new MenuCategory('','','')
   }
   refreshData(){
     this.menuItems = this.menuservice.menuItems;

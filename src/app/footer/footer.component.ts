@@ -8,7 +8,7 @@ import { LoginStatus } from '../LoginStatus';
   styleUrls: ['./footer.component.css']
 })
 export class FooterComponent implements OnInit, DoCheck {
-
+  isAdmin:boolean = true;
   loggedIn:boolean = LoginStatus.loggedIn;
 
   constructor(private router: Router) { }

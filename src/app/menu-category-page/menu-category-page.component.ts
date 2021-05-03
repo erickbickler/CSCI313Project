@@ -20,6 +20,7 @@ export class MenuCategoryPageComponent implements OnInit {
     this.menuCategories = this.menuservice.menuCatigories
   }
   setData(){
+    this.menuservice.menuCatigories = [];
     this.dbservice.httpGet('menuCategory').subscribe( data => data.forEach(element => {
       this.menuservice.menuCatigories.push(element as MenuCategory);
     })); 
