@@ -12,21 +12,31 @@ import { MenuItem } from '../Model/menu-item';
 })
 export class MenuItemPageComponent implements OnInit {
 
+  
+
   menuCategory:MenuCategory= new MenuCategory('','','');
   constructor(private dbservice:HttpService, private menuservice:MenuService, private router:Router) { }
   admin:boolean=false;
-
+  menuItems :MenuItem[] = []
   ngOnInit(): void {
     this.menuCategory = this.menuservice.activeCatigory;
     this.setData();
     this.admin= this.dbservice.admin;
+    
   }
 
-  setData(){
+  async setData(){
     this.dbservice.httpGet( "menuCategory/" +  this.menuCategory.id + "/" +'menu-items' ).subscribe(data => this.menuservice.menuItems = data as MenuItem[]);
+    this.menuItems = this.menuservice.menuItems;
   }
 
   back(){
     this.router.navigate(['/menu-category-page']);
   }
+  refreshData(){
+    this.menuItems = this.menuservice.menuItems;
+  }
+
+
+
 }
