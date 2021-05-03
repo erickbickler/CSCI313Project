@@ -17,8 +17,6 @@ export class LocationsComponent implements OnInit {
   new_phone_number: string = '';
   new_map_url: string ='';
   location:Location = new Location('', '', '', '', '');
-
-  isAdmin: boolean = true;
   locationToEdit: Location = new Location('', '', '', '', '');
   loggedIn:boolean = LoginStatus.loggedIn;
 
