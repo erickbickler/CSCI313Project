@@ -16,7 +16,10 @@
             </svg>
         </a>
     </div>
-    <p class="info-login">
+    <p class="info-login" *ngIf='!isAdmin'>
         @2021 The Saucy Hedgehog | <a routerLink="home" class="admin-login">Log In</a>
+    </p>
+    <p class="info-login" *ngIf='isAdmin'>
+        @2021 The Saucy Hedgehog | <a routerLink="home" class="admin-login">Log Out</a>
     </p>
 </footer>

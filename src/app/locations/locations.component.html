@@ -31,16 +31,47 @@
 
         <h1>Our Locations</h1>
         <div class="card mx-auto" *ngFor="let location of locationList">
-          <div class="card-header">
-            <h4>{{location.city}}, {{location.state}}</h4>
+          <div *ngIf="locationToEdit != location">
+            <div class="card-header">
+              <h4>{{location.city}}, {{location.state}}</h4>
+            </div>
+            <div class="card-body">
+                <ul>Address: {{location.address}}</ul>
+                <ul>Phone Number: {{location.phone_number}}</ul>
+                <ul><a href="{{location.map_url}}">Directions</a></ul>
+              <div *ngIf="isAdmin">
+                <ul *ngIf='locationToEdit != location'>
+                  <button class="btn btn-primary" (click)="editLocation(location)">Edit Location</button>
+                  <button class="btn btn-primary" (click)="deleteLocation(location)">Delete Location</button>
+                </ul>
+              </div>
+            </div>
           </div>
-          <div class="card-body">
-            <ul>Address: {{location.address}}</ul>
-            <ul>Phone Number: {{location.phone_number}}</ul>
-            <ul><a href="{{location.map_url}}">Directions</a></ul>
-          
-            <div *ngIf="isAdmin">
-              <button class="btn btn-primary" (click)="deleteLocation(location)">Delete Location</button>
+
+          <div *ngIf="locationToEdit == location">
+            <div class="card-header">
+              <h4>
+                <label for="city">City:</label>
+                <input name="city" class="form-control" type="text" [(ngModel)]="locationToEdit.city">
+                <label for="state">State:</label>
+                <input name="state" class="form-control" type="text" [(ngModel)]="locationToEdit.state">
+              </h4>
+            </div>
+            <div class="card-body">
+              <ul>
+                <label for="address">Address:</label>
+                <input name="address" class="form-control" type="text" [(ngModel)]="locationToEdit.address">
+              </ul>
+              <ul>
+                <label for="phone_number">Phone Number:</label>
+                <input name="phone_number" class="form-control" type="text" [(ngModel)]="locationToEdit.phone_number">
+              </ul>
+              <div *ngIf="isAdmin">
+                <ul *ngIf="locationToEdit == location">
+                  <button class="btn btn-primary" (click)="saveLocation(location)">Save</button>
+                  <button class="btn btn-primary" (click)="cancel()">Cancel</button>
+                </ul>
+              </div>
             </div>
           </div>
         </div>
