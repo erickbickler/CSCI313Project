@@ -15,10 +15,14 @@ export class MenuItemDescriptionPageComponent implements OnInit {
   menuItem:MenuItem = this.menuService.activeMenuItem;
   admin:boolean=false;
   ngOnInit(): void {
+    if(this.menuService.activeMenuItem.name = ''){
+      this.router.navigate(['/menu-category-page']);
+    }
     this.admin = this.dbservice.admin;
   }
 
   back(){
+    this.menuService.activeMenuItem = new MenuItem('','','');
     this.router.navigate(['/menu-item-page']);
   }
 
