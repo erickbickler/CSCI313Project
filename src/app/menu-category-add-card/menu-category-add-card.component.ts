@@ -25,6 +25,11 @@ export class MenuCategoryAddCardComponent implements OnInit {
     let catigory: MenuCategory = new MenuCategory(this.name, this.description, this.picture)
     this.dbservice.httpPut('menuCategory', catigory).subscribe();
     this.menuservice.menuCategories.push(catigory);
+    
+    this.name = "";
+    this.description="";
+    this.picture="";
+    
     this.refreshData.emit(true);
   }
 

@@ -25,6 +25,10 @@ export class MenuItemCardEditComponent implements OnInit {
     this.menuservice.activeMenuItem.setImage(this.picture)
     this.dbservice.httpPut( "menuCategory/" +  this.menuservice.activeCategory.id + "/" +'menu-items', this.menuservice.activeMenuItem).subscribe();
     this.menuservice.menuItems[this.menuservice.IndexOfMenuItem] = this.menuservice.activeMenuItem;
+    
+    this.name = "";
+    this.description="";
+    this.picture="";
   }
 
 }

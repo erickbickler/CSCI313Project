@@ -25,6 +25,10 @@ export class MenuCategoryEditComponent implements OnInit {
       this.menuservice.activeCategory.setImage(this.picture)
       this.dbservice.httpPut('menuCategory', this.menuservice.activeCategory).subscribe();
       this.menuservice.menuCategories[this.menuservice.indexOfCategory] = this.menuservice.activeCategory;
+      
+      this.name = "";
+      this.description="";
+      this.picture="";
   }
 
 }
