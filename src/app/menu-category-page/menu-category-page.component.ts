@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { HttpService } from '../http-service.service';
 import { MenuService } from '../menu.service';
 import { MenuCategory } from '../Model/menu-category';
-
+import { LoginStatus } from '../LoginStatus';
 @Component({
   selector: 'app-menu-category-page',
   templateUrl: './menu-category-page.component.html',
@@ -12,23 +12,24 @@ export class MenuCategoryPageComponent implements OnInit {
 
   constructor(private dbservice: HttpService, 
     private menuservice:MenuService) { }
-    admin:boolean = true;
+    admin:boolean = LoginStatus.loggedIn;
     menuCategories:MenuCategory[] = []
     ngOnInit(): void {
     this.admin = this.dbservice.admin;
     this.setData()
-    this.menuCategories = this.menuservice.menuCatigories
+    this.menuCategories = this.menuservice.menuCategories
+    this.admin = LoginStatus.loggedIn;
   }
   setData(){
-    this.menuservice.menuCatigories = [];
+    this.menuservice.menuCategories = [];
     this.dbservice.httpGet('menuCategory').subscribe( data => data.forEach(element => {
-      this.menuservice.menuCatigories.push(element as MenuCategory);
+      this.menuservice.menuCategories.push(element as MenuCategory);
     })); 
-    this.menuCategories = this.menuservice.menuCatigories
+    this.menuCategories = this.menuservice.menuCategories
   }
 
   refreshData(){
-    this.menuCategories = this.menuservice.menuCatigories
+    this.menuCategories = this.menuservice.menuCategories
   }
 
 }

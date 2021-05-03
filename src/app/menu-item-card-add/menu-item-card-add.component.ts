@@ -23,7 +23,7 @@ export class MenuItemCardAddComponent implements OnInit {
   }
   add(){
     let menu:MenuItem = new MenuItem(this.name, this.description, this.picture)
-    this.dbservice.httpPut( "menuCategory/" +  this.menuservice.activeCatigory.id + "/" +'menu-items', menu).subscribe();
+    this.dbservice.httpPut( "menuCategory/" +  this.menuservice.activeCategory.id + "/" +'menu-items', menu).subscribe();
     this.menuservice.menuItems.push(menu);
     this.refreshData.emit(true)
   }

@@ -19,18 +19,18 @@ export class MenuCategoryCardComponent implements OnInit {
   category: MenuCategory = new MenuCategory('','','');
   ngOnInit(): void {
     this.admin = this.dbservice.admin;
-    this.category = this.menuservice.menuCatigories[this.index];
+    this.category = this.menuservice.menuCategories[this.index];
   }
 
   onClick(){
-    this.menuservice.activeCatigory = this.category;
-    this.menuservice.indexOfCatigory = this.index;
+    this.menuservice.activeCategory = this.category;
+    this.menuservice.indexOfCategory = this.index;
     this.router.navigate(['/menu-item-page'])
   }
 
   remove(){
     this.dbservice.httpDelete('menuCategory', this.category).subscribe();
-    this.menuservice.menuCatigories.splice(this.index,1);
+    this.menuservice.menuCategories.splice(this.index,1);
   }
 
 

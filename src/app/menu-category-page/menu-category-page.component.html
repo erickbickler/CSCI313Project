@@ -1,11 +1,12 @@
 <app-menu-category-add-card (refreshData)="refreshData()" *ngIf='admin'></app-menu-category-add-card>
 <div class="container">
     <h1> Food Categories</h1>
-    
-<div class="grid-container">
+
+    <div class="grid-container">
         <div *ngFor="let menuCat of menuCategories; index as i;">
             <div class="grid-item">
-                <app-menu-category-card  [index]="i"></app-menu-category-card>
+                <app-menu-category-card [index]="i"></app-menu-category-card>
             </div>
         </div>
+    </div>
 </div>
