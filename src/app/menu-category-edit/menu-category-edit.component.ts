@@ -14,7 +14,7 @@ export class MenuCategoryEditComponent implements OnInit {
 
   ngOnInit(): void {
   }
-    //varibles for admin
+    //variables for admin
     name:string = "";
     description:string="";
     picture:string="";

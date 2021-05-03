@@ -2,8 +2,10 @@ import { Route } from '@angular/compiler/src/core';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
+import { HttpService } from '../http-service.service';
 import { LoginService } from '../login.service';
 import { LoginStatus } from '../LoginStatus';
+import { User } from '../user';
 
 @Component({
   selector: 'app-register',
@@ -12,8 +14,6 @@ import { LoginStatus } from '../LoginStatus';
 })
 export class RegisterComponent implements OnInit {
   form:FormGroup = this.formBuilder.group({
-    firstName: ['', Validators.required],
-    lastName: ['', Validators.required],
     username: ['', Validators.required],
     password: ['', [Validators.required, Validators.minLength(6)]]
   });
@@ -26,6 +26,7 @@ export class RegisterComponent implements OnInit {
     private route: ActivatedRoute,
     private router: Router,
     private loginService: LoginService,
+    private httpService: HttpService,
     ) { }
 
   ngOnInit(): void {
@@ -41,8 +42,24 @@ export class RegisterComponent implements OnInit {
     }
 
     this.loading = true;
-    this.loginService.register(this.f.username.value, this.f.password.value);
-    this.router.navigate(['../login'], { relativeTo: this.route });
+    let user:User = new User(this.f.username.value, this.f.password.value);
+    this.httpService.httpGet('users', 
+      '?orderBy="username"&equalTo="' 
+      + this.f.username.value
+      + '"&limitToFirst=1'
+    ).subscribe(data => {
+      let matchedUser: User = data[0] as User;
+      if(matchedUser) {
+        alert("User already exists");
+        this.loading = false;
+      } else {
+        this.httpService.httpPut('users', user).subscribe(data => {
+          this.loading = false;
+          LoginStatus.loggedIn = true;
+          this.router.navigate(['home']);
+        });
+      }
+    });
   }
 
 }

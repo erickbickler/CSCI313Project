@@ -17,6 +17,11 @@
         </a>
     </div>
     <p class="info-login">
-        @2021 The Saucy Hedgehog | <a routerLink="home" class="admin-login">Log In</a>
+        @2021 The Saucy Hedgehog | 
+        <a routerLink="login" class="admin-login" *ngIf="!loggedIn">Login</a>
+        <a (click) = "logout()" class="admin-login" *ngIf="loggedIn">Logout</a>
+    </p>
+    <p class="info-login" *ngIf='isAdmin'>
+        @2021 The Saucy Hedgehog | <a routerLink="home" class="admin-login">Log Out</a>
     </p>
 </footer>
