@@ -12,7 +12,6 @@ import { LoginService } from './login.service';
 import { FooterComponent } from './footer/footer.component';
 import { LocationsComponent } from './locations/locations.component';
 import { HomeComponent } from './home/home.component';
-
 import { MenuCategoryPageComponent } from './menu-category-page/menu-category-page.component';
 import { MenuCategoryCardComponent } from './menu-category-card/menu-category-card.component';
 import { MenuCategoryAddCardComponent } from './menu-category-add-card/menu-category-add-card.component';
