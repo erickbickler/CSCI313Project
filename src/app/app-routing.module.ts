@@ -4,11 +4,11 @@ import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 
 import { LocationsComponent } from './locations/locations.component';
-import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
 import { MenuItemPageComponent } from './menu-item-page/menu-item-page.component';
 import { MenuCategoryPageComponent } from './menu-category-page/menu-category-page.component';
 import { MenuPageComponent } from './menu-page/menu-page.component';
+import { MenuItemCardEditComponent } from './menu-item-card-edit/menu-item-card-edit.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full' },
@@ -18,7 +18,8 @@ const routes: Routes = [
   { path: 'register', component: RegisterComponent },
   { path: 'menu-category-page', component:MenuCategoryPageComponent},
   { path: 'menu-item-page', component: MenuItemPageComponent },
-  { path: 'menu' , component:MenuPageComponent}
+  { path: 'menu' , component:MenuPageComponent},
+  { path: 'edit-item-card', component:MenuItemCardEditComponent}
 ];
 
 @NgModule({

@@ -21,6 +21,11 @@ export class MenuItemCardComponent implements OnInit {
     this.menuItem = this.menuservice.menuItems[this.index];
     this.admin = LoginStatus.loggedIn;
   }
+  onClick(){
+    if(this.admin){
+      this.router.navigate(['/edit-item-card'])
+    }
+  }
 
   remove(){
     this.dbservice.httpDelete("menuCategory/" +  this.menuservice.activeCategory.id + "/" +'menu-items', this.menuItem).subscribe();
