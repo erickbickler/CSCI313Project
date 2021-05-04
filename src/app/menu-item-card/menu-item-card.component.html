@@ -1,11 +1,12 @@
 <div class="container">
-<div (click)="OnClick()" >
   <div class="card" style="width: 18rem; height: 250px; background-color: coral;">
     <img width = "190" height = "190" class="card-img-top" [src]="menuItem.image" alt="Card image cap">
-    <div class="card-body" >
-      <p class="card-text">{{menuItem.name}}</p>
+    <h5 class="card-header" style="color: white">
+      {{menuItem.name}}
+    </h5>
+    <div class="overlay">
+      <div class="text">{{menuItem.description}}</div>
     </div>
   </div>
-</div>
-<button *ngIf="admin" (click)="remove()" class="btn btn-primary">Remove</button>
+  <button *ngIf="admin" (click)="remove()" class="btn btn-primary">Remove</button>
 </div>

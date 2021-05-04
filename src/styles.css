@@ -10,3 +10,7 @@ html, body {
 .push {
     height: 50px;
 }
+/* .btn-primary, .btn-primary:hover, .btn-primary:active, .btn-primary:visited {
+    background-color: rgb(255, 60, 0) !important;
+    border-color: #fd7e14 !important;
+} */
