@@ -32,13 +32,18 @@
         <h1>Our Locations</h1>
         <div class="card mx-auto" *ngFor="let location of locationList">
           <div *ngIf="locationToEdit != location">
-            <div class="card-header">
+            <div class="card-header" style="color: white">
               <h4>{{location.city}}, {{location.state}}</h4>
             </div>
             <div class="card-body">
                 <ul>Address: {{location.address}}</ul>
                 <ul>Phone Number: {{location.phone_number}}</ul>
-                <ul><a href="{{location.map_url}}">Directions</a></ul>
+                <ul>
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-map" viewBox="0 0 16 16" style="margin-right: 5px">
+                    <path fill-rule="evenodd" d="M15.817.113A.5.5 0 0 1 16 .5v14a.5.5 0 0 1-.402.49l-5 1a.502.502 0 0 1-.196 0L5.5 15.01l-4.902.98A.5.5 0 0 1 0 15.5v-14a.5.5 0 0 1 .402-.49l5-1a.5.5 0 0 1 .196 0L10.5.99l4.902-.98a.5.5 0 0 1 .415.103zM10 1.91l-4-.8v12.98l4 .8V1.91zm1 12.98 4-.8V1.11l-4 .8v12.98zm-6-.8V1.11l-4 .8v12.98l4-.8z"/>
+                  </svg>
+                  <a href="{{location.map_url}}">Directions</a>
+                </ul>
               <div *ngIf="loggedIn">
                 <ul *ngIf='locationToEdit != location'>
                   <button class="btn btn-primary" (click)="editLocation(location)">Edit Location</button>

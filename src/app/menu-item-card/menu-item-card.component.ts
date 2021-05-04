@@ -22,12 +22,6 @@ export class MenuItemCardComponent implements OnInit {
     this.admin = LoginStatus.loggedIn;
   }
 
-  OnClick(){
-    this.menuservice.activeMenuItem = this.menuItem;
-    this.menuservice.IndexOfMenuItem = this.index;
-    this.router.navigate(['/menu-item-description-page']);
-  }
-
   remove(){
     this.dbservice.httpDelete("menuCategory/" +  this.menuservice.activeCategory.id + "/" +'menu-items', this.menuItem).subscribe();
     this.menuservice.menuItems.splice(this.index,1);

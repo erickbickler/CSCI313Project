@@ -20,6 +20,7 @@ export class MenuItemPageComponent implements OnInit {
   constructor(private dbservice:HttpService, private menuservice:MenuService, private router:Router,) { }
   admin:boolean = LoginStatus.loggedIn;
   menuItems :MenuItem[] = []
+  category:string = this.menuservice.activeCategory.name;
   ngOnInit(): void {
     if(this.menuservice.activeCategory.name == ''){
       this.router.navigate(['/menu-category-page']);

@@ -19,7 +19,6 @@ import { MenuItemPageComponent } from './menu-item-page/menu-item-page.component
 import { MenuCategoryEditComponent } from './menu-category-edit/menu-category-edit.component';
 import { MenuItemCardComponent } from './menu-item-card/menu-item-card.component';
 import { MenuItemCardAddComponent } from './menu-item-card-add/menu-item-card-add.component';
-import { MenuItemDescriptionPageComponent } from './menu-item-description-page/menu-item-description-page.component';
 import { MenuPageComponent } from './menu-page/menu-page.component';
 import { MenuItemCardEditComponent } from './menu-item-card-edit/menu-item-card-edit.component';
 import { MenuService } from './menu.service';
@@ -40,7 +39,6 @@ import { MenuService } from './menu.service';
     MenuCategoryEditComponent,
     MenuItemCardComponent,
     MenuItemCardAddComponent,
-    MenuItemDescriptionPageComponent,
     MenuPageComponent,
     MenuItemCardEditComponent
   ],
