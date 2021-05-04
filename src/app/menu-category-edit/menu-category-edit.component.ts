@@ -13,6 +13,9 @@ export class MenuCategoryEditComponent implements OnInit {
   constructor(private dbservice:HttpService, private menuservice:MenuService) { }
 
   ngOnInit(): void {
+    this.name = this.menuservice.activeCategory.name;
+    this.description  =this.menuservice.activeCategory.description;
+    this.picture=this.menuservice.activeCategory.image;
   }
     //variables for admin
     name:string = "";
